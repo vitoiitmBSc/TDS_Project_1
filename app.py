@@ -77,6 +77,10 @@ load_dotenv()
 #     else:
 #         return JSONResponse(content={"error": "Failed to get response", "details": response.text}, status_code=response.status_code)
 
+# @app.get("/")
+# def home():
+#     return {"Hello"}
+
 @app.get("/ask")
 def ask(prompt: str):
     result = get_completions(prompt)

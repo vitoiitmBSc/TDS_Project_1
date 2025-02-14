@@ -19,5 +19,14 @@ WORKDIR /app
 # Copy application files
 COPY app.py /app
 
+COPY tasksA.py /app
+
+COPY tasksB.py /app
+
+# Make port 8000 available to the world outside this container
+EXPOSE 8000
+
 # Explicitly set the correct binary path and use `sh -c`
 CMD ["/root/.local/bin/uv", "run", "app.py"]
+
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
