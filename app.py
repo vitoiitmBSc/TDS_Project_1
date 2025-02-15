@@ -103,9 +103,10 @@ function_definitions_llm = [
             "properties": {
                 # "filename": {"type": "string", "pattern": r"https?://.*\.py"},
                 # "targetfile": {"type": "string", "pattern": r".*/(.*\.py)"},
+                "url" : {"type":"string", "pattern": r"https://.*\.py"},
                 "email": {"type": "string", "pattern": r"[\w\.-]+@[\w\.-]+\.\w+"}
             },
-            "required": ["filename", "targetfile", "email"]
+            "required": ["url", "email"]
         }
     },
     {

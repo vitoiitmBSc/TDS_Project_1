@@ -8,19 +8,24 @@ import os
 import requests
 from scipy.spatial.distance import cosine
 from dotenv import load_dotenv
+from fastapi import HTTPException
+
 
 load_dotenv()
 
 AIPROXY_TOKEN = os.getenv('AIPROXY_TOKEN')
 
 
-def A1(email="21f2000070@ds.study.iitm.ac.in"):
+def A1(url,email="21f2000070@ds.study.iitm.ac.in"):
+    print("url is \n\n\n\n\n",url, email)
     try:
         process = subprocess.Popen(
-            ["uv", "run", "https://raw.githubusercontent.com/sanand0/tools-in-data-science-public/tds-2025-01/project-1/datagen.py", email],
+            ["uv", "run", url, email],
             stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
         )
+        
         stdout, stderr = process.communicate()
+        print("\n\n\n",stdout)
         if process.returncode != 0:
             raise HTTPException(status_code=500, detail=f"Error: {stderr}")
         return stdout
